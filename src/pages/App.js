@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Character from "../components/Character";
+import Movie from "../components/Movie";
 
 const mapStateToProps = function(state){
     return {
         loading: state.loading,
-        characters: state.characters
+        characters: state.characters,
+        movies: state.movies,
     }
 };
+
+const mapDispatchToProps = function(dispatch){
+    return {
+        getMovies: character => dispatch({type: 'GET_MOVIES', character: character}),
+    }
+}
 
 class App extends Component {
   render() {
@@ -18,12 +26,25 @@ class App extends Component {
           {this.props.loading ? "Loading..." : ""}
           <ul id="characters">
               {this.props.characters.map(character =>
-                                         <Character characterDetails={character}/>
+                                         <Character
+                                             characterDetails={character}
+                                             getMovies={this.props.getMovies}
+                                         />
               )}
           </ul>
+
+          { this.props.movies && this.props.movies.length > 0 &&
+            <div>
+                <h1>Movies</h1>
+                <ul id="movies">
+                    {this.props.movies.map(movie => <Movie movieDetails={movie} />)}
+                </ul>
+            </div>
+          }
+
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

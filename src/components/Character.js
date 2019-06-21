@@ -5,7 +5,7 @@ import '../pages/App.css';
 class Character extends Component{
     render(){
         return (
-            <li class="character">
+            <li class="character" onClick={this.getMovies.bind(this)}>
                 <p>
                     {this.props.characterDetails.name}
                 </p>
@@ -13,10 +13,16 @@ class Character extends Component{
         );
     }
 
+    getMovies(e){
+        e.preventDefault();
+        this.props.getMovies(this.props.characterDetails.name);
+    }
+
 };
 
 Character.propTypes = {
     characterDetails: PropTypes.object,
+    getMovies: PropTypes.func
 }
 
 export default Character;

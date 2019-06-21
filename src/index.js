@@ -7,12 +7,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { loading } from './reducers/loading';
 import { characters } from './reducers/characters';
+import { movies } from './reducers/movies';
 import characterService from './service/characterService'
 
 
 import App from './pages/App';
 
-const rootReducer =  combineReducers({ characters, loading });
+const rootReducer =  combineReducers({ characters, movies, loading });
 const store = createStore(rootReducer, {}, applyMiddleware(characterService));
 
 const Root = () => (

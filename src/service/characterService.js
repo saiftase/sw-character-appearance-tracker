@@ -20,6 +20,25 @@ const characterService = store => next => action => {
                     });
                 });
             break;
+
+        case 'GET_MOVIES':
+            const character = action.character;
+            request
+                .get(`/${character}/films`)
+                .end( (err, res) => {
+                    if(err){
+                        next({
+                            type:'GET_MOVIES_ERROR',
+                            err
+                         })
+                    }
+                    const data = JSON.parse(res.text);
+                    next({
+                        type: 'GET_MOVIES_RECEIVED',
+                        data
+                    })
+                });
+            break;
         default:
             break;
     }
