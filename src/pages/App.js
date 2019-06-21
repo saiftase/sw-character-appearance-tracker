@@ -33,11 +33,11 @@ class App extends Component {
               )}
           </ul>
 
-          { this.props.movies && this.props.movies.length > 0 &&
+          { this.props.movies.movies && this.props.movies.movies.length > 0 &&
             <div>
-                <h1>Movies</h1>
+                <h1>Movies featuring {this.props.movies.character} </h1>
                 <ul id="movies">
-                    {this.props.movies.map(movie => <Movie movieDetails={movie} />)}
+                    {this.props.movies.movies.map(movie => <Movie movieDetails={movie} />)}
                 </ul>
             </div>
           }

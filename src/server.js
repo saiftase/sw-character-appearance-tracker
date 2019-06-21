@@ -48,7 +48,10 @@ app.get('/:character/films', (req, res) => {
                     return filmSimple;
                 });
 
-                res.send(results);
+                res.send({
+                 character: character.name,
+                 movies: results
+                });
 
             });
 
