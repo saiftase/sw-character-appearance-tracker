@@ -6,7 +6,7 @@ class Movie extends Component{
     render(){
         return (
             <li class="movie">
-                <p>{this.props.movieDetails.title}</p>
+                <p><b>{this.props.movieDetails.title}</b></p>
                 <p>{this.props.movieDetails.releaseDate}</p>
             </li>
         );

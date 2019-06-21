@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import '../pages/App.css';
+import Button from '@material-ui/core/Button'
 
 class Character extends Component{
     render(){
         return (
             <li class="character" onClick={this.getMovies.bind(this)}>
-                <p>
+                <Button variant="contained" color="primary">
                     {this.props.characterDetails.name}
-                </p>
+                </Button>
             </li>
         );
     }

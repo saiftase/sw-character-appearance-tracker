@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+#app{
+  margin: 20px;
+}
+
+li{
+  list-style: none;
+  margin: 10px 0;
+}
+
+ul{
+  padding: 0 !important;
+}
+
+h1{
+  margin: 10px 0;
+}
+
+li p{
+  margin: 5px 0;
+}

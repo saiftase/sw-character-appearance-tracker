@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import Character from "../components/Character";
 import Movie from "../components/Movie";
+import Grid from '@material-ui/core/Grid'
 
 const mapStateToProps = function(state){
     return {
@@ -22,18 +23,19 @@ const mapDispatchToProps = function(dispatch){
 class App extends Component {
   render() {
     return (
-      <div id="app">
-          <h1>Characters</h1>
+      <Grid id="app" container direction="column" >
           {this.props.loading ? "Loading..." : ""}
-          <ul id="characters">
-              {this.props.characters.map(character =>
-                                         <Character
-                                             characterDetails={character}
-                                             getMovies={this.props.getMovies}
-                                         />
-              )}
-          </ul>
-
+          <div>
+              <h1>Characters</h1>
+              <ul id="characters">
+                  {this.props.characters.map(character =>
+                                             <Character
+                                                 characterDetails={character}
+                                                 getMovies={this.props.getMovies}
+                                             />
+                  )}
+              </ul>
+          </div>
           { !this.props.errors && this.props.movies.movies && this.props.movies.movies.length > 0 &&
             <div>
                 <h1>Movies featuring {this.props.movies.character} </h1>
@@ -47,7 +49,7 @@ class App extends Component {
             <p>An error has occurred.</p>
           }
 
-      </div>
+      </Grid>
     )
   }
 }
