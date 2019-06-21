@@ -21,7 +21,7 @@ const characterService = store => next => action => {
                 });
             break;
         default:
-            break
+            break;
     }
 
 };
