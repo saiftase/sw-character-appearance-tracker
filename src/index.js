@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { loading } from './reducers/loading';
+import { errors } from './reducers/errors';
 import { characters } from './reducers/characters';
 import { movies } from './reducers/movies';
 import characterService from './service/characterService'
@@ -13,7 +14,7 @@ import characterService from './service/characterService'
 
 import App from './pages/App';
 
-const rootReducer =  combineReducers({ characters, movies, loading });
+const rootReducer =  combineReducers({ characters, movies, loading, errors });
 const store = createStore(rootReducer, {}, applyMiddleware(characterService));
 
 const Root = () => (

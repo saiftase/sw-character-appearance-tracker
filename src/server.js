@@ -24,10 +24,15 @@ app.get('/:character/films', (req, res) => {
         const character = matchingCharacters[0];
         request(character.url, function (error, response, body) {
             if (error) {
-                // Bad URL or some other error with request.
+                res.status(500).send("Sorry, an error occurred.")
             }
 
             let filmURLs = JSON.parse(body).films;
+
+            if(!filmURLs){
+                res.status(500).send("Sorry, an error occurred.")
+            }
+
             Promise.map(filmURLs, filmURL => {
                 // Bluebird / Request boilerplate code
                 return request.getAsync(filmURL).spread(function(response,body) {
@@ -57,7 +62,7 @@ app.get('/:character/films', (req, res) => {
 
         })
     }else {
-        // Character was not found - bad input
+        res.status(400).send("Character not found.")
     }
 });
 
